@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">DoubletappProject</string>
     <string name="enter_the_square">Enter the square</string>
+    <string name="enter_the_main">Enter the main</string>
 </resources>

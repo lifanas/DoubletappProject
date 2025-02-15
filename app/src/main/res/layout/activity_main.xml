@@ -11,6 +11,7 @@
         android:id="@+id/displayed_number"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
         android:textSize="26sp"
         android:textStyle="italic"
         app:layout_constraintBottom_toTopOf="@+id/open_square_activity"

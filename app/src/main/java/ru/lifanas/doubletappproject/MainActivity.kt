@@ -1,5 +1,7 @@
 package ru.lifanas.doubletappproject
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -17,6 +19,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         incCount(savedInstanceState)
+        setupSquareButtonClickListener()
         SaverLog.log(this, "$ACTIVITY_TAG: onCreate")
     }
 
@@ -50,13 +53,21 @@ class MainActivity : AppCompatActivity() {
         SaverLog.log(this, "$ACTIVITY_TAG: onDestroy")
     }
 
+    private fun setupSquareButtonClickListener() = binding.openSquareActivity.setOnClickListener {
+        startActivity(SquareActivity.newIntent(this, count))
+    }
+
     private fun incCount(savedInstanceState: Bundle?) {
-        count = savedInstanceState?.getInt(COUNT)?.inc() ?: 0
+        count = savedInstanceState?.getInt(COUNT)?.inc() ?: intent.getIntExtra(EXTRA_NUMBER, 0)
         binding.displayedNumber.text = count.toString()
     }
 
-    private companion object {
-        const val COUNT = "count"
-        const val ACTIVITY_TAG = "MainActivity"
+    companion object {
+        private const val COUNT = "count"
+        private const val ACTIVITY_TAG = "MainActivity"
+        private const val EXTRA_NUMBER = "number"
+
+        fun newIntent(context: Context, number: Int) =
+            Intent(context, MainActivity::class.java).apply { putExtra(EXTRA_NUMBER, number) }
     }
 }
