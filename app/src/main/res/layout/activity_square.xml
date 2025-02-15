@@ -12,6 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/size_small"
+        android:gravity="center"
         android:textSize="@dimen/text_size_large"
         android:textStyle="italic"
         app:layout_constraintBottom_toTopOf="@+id/tv_displayed_number"

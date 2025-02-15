@@ -4,4 +4,5 @@
     <string name="enter_the_main">Вернуться к увеличению числа</string>
     <string name="upend_to_start_tv">Переверните, чтобы начать</string>
     <string name="original_number">Исходное число: %d</string>
+    <string name="winner_game">Вы прошли игру</string>
 </resources>

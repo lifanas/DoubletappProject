@@ -60,7 +60,14 @@ class SquareActivity : AppCompatActivity() {
     private fun restoreOrCalculateCount(savedInstanceState: Bundle?) {
         originalCount = intent.getLongExtra(EXTRA_NUMBER, 0)
         count = savedInstanceState?.getLong(COUNT) ?: originalCount.square()
-        binding.tvDisplayedNumber.text = count.toString()
+        binding.tvDisplayedNumber.text =
+            if (count <= 0) {
+                getString(R.string.winner_game).also {
+                    count = 0L
+                }
+            } else {
+                count.toString()
+            }
         setupTvOriginalNumber()
     }
 
