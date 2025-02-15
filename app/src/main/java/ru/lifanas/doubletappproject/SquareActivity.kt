@@ -10,7 +10,8 @@ import ru.lifanas.doubletappproject.saverLog.SaverLog
 
 class SquareActivity : AppCompatActivity() {
 
-    private var count = 0
+    private var count = 0L
+    private var originalCount = 0L
     private lateinit var binding: ActivitySquareBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,7 +25,7 @@ class SquareActivity : AppCompatActivity() {
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        outState.putInt(COUNT, count)
+        outState.putLong(COUNT, count)
     }
 
     override fun onStart() {
@@ -52,23 +53,29 @@ class SquareActivity : AppCompatActivity() {
         SaverLog.log(this, "$ACTIVITY_TAG: onDestroy")
     }
 
-    private fun setupSquareButtonClickListener() = binding.openMainActivity.setOnClickListener {
+    private fun setupSquareButtonClickListener() = binding.btnOpenMainActivity.setOnClickListener {
         startActivity(MainActivity.newIntent(this, count))
     }
 
     private fun restoreOrCalculateCount(savedInstanceState: Bundle?) {
-        count = savedInstanceState?.getInt(COUNT) ?: intent.getIntExtra(EXTRA_NUMBER, 0).square()
-        binding.displayedNumber.text = count.toString()
+        originalCount = intent.getLongExtra(EXTRA_NUMBER, 0)
+        count = savedInstanceState?.getLong(COUNT) ?: originalCount.square()
+        binding.tvDisplayedNumber.text = count.toString()
+        setupTvOriginalNumber()
     }
 
-    private fun Int.square(): Int = this * this
+    private fun setupTvOriginalNumber() {
+        binding.tvReturnValue.text = getString(R.string.original_number, originalCount)
+    }
+
+    private fun Long.square(): Long = this * this
 
     companion object {
         private const val COUNT = "count"
         private const val EXTRA_NUMBER = "number"
         private const val ACTIVITY_TAG = "SecondActivity"
 
-        fun newIntent(context: Context, number: Int) =
+        fun newIntent(context: Context, number: Long) =
             Intent(context, SquareActivity::class.java).apply { putExtra(EXTRA_NUMBER, number) }
     }
 }

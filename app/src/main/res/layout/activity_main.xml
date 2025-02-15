@@ -8,28 +8,53 @@
     tools:context=".MainActivity">
 
     <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/upend_to_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/size_small"
+        android:text="@string/upend_to_start_tv"
+        android:textSize="@dimen/text_size_large"
+        android:textStyle="italic"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/displayed_number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="spread"
+        tools:visibility="visible" />
+
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/displayed_number"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:textSize="26sp"
+        android:layout_marginHorizontal="@dimen/size_small"
+        android:layout_marginStart="@dimen/size_small"
+        android:layout_marginEnd="@dimen/size_small"
+        android:textSize="@dimen/text_size_large"
         android:textStyle="italic"
         app:layout_constraintBottom_toTopOf="@+id/open_square_activity"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/upend_to_start"
         tools:text="0" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/open_square_activity"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginBottom="64dp"
+        android:layout_marginStart="@dimen/size_medium"
+        android:layout_marginTop="@dimen/size_small"
+        android:layout_marginEnd="@dimen/size_medium"
+        android:layout_marginBottom="@dimen/size_medium"
+        android:padding="@dimen/size_medium"
         android:text="@string/enter_the_square"
         android:textAllCaps="false"
+        android:textSize="@dimen/text_size_medium"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/displayed_number"
+        tools:visibility="visible" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

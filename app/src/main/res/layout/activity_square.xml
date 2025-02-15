@@ -8,28 +8,49 @@
     tools:context=".SquareActivity">
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/displayed_number"
+        android:id="@+id/tv_return_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:textSize="26sp"
+        android:layout_margin="@dimen/size_small"
+        android:textSize="@dimen/text_size_large"
         android:textStyle="italic"
-        app:layout_constraintBottom_toTopOf="@+id/open_main_activity"
+        app:layout_constraintBottom_toTopOf="@+id/tv_displayed_number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="spread"
+        tools:text="@string/original_number" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_displayed_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/size_small"
+        android:layout_marginStart="@dimen/size_small"
+        android:layout_marginEnd="@dimen/size_small"
+        android:textSize="@dimen/text_size_large"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toTopOf="@+id/btn_open_main_activity"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_return_value"
         tools:text="0" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/open_main_activity"
+        android:id="@+id/btn_open_main_activity"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginBottom="64dp"
+        android:layout_marginStart="@dimen/size_medium"
+        android:layout_marginTop="@dimen/size_small"
+        android:layout_marginEnd="@dimen/size_medium"
+        android:layout_marginBottom="@dimen/size_medium"
+        android:padding="@dimen/size_medium"
         android:text="@string/enter_the_main"
         android:textAllCaps="false"
+        android:textSize="@dimen/text_size_medium"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_displayed_number" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

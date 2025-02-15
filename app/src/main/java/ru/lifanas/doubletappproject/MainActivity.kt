@@ -5,12 +5,13 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import ru.lifanas.doubletappproject.databinding.ActivityMainBinding
 import ru.lifanas.doubletappproject.saverLog.SaverLog
 
 class MainActivity : AppCompatActivity() {
 
-    private var count = 0
+    private var count = 0L
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,12 +21,13 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         incCount(savedInstanceState)
         setupSquareButtonClickListener()
+        setupView()
         SaverLog.log(this, "$ACTIVITY_TAG: onCreate")
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        outState.putInt(COUNT, count)
+        outState.putLong(COUNT, count)
     }
 
     override fun onStart() {
@@ -58,8 +60,18 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun incCount(savedInstanceState: Bundle?) {
-        count = savedInstanceState?.getInt(COUNT)?.inc() ?: intent.getIntExtra(EXTRA_NUMBER, 0)
+        count = savedInstanceState?.getLong(COUNT)?.inc() ?: intent.getLongExtra(EXTRA_NUMBER, 0)
         binding.displayedNumber.text = count.toString()
+    }
+
+    private fun setupView() {
+        if (count == 0L) {
+            binding.upendToStart.isVisible = true
+            binding.openSquareActivity.isVisible = false
+        } else {
+            binding.upendToStart.isVisible = false
+            binding.openSquareActivity.isVisible = true
+        }
     }
 
     companion object {
@@ -67,7 +79,7 @@ class MainActivity : AppCompatActivity() {
         private const val ACTIVITY_TAG = "MainActivity"
         private const val EXTRA_NUMBER = "number"
 
-        fun newIntent(context: Context, number: Int) =
+        fun newIntent(context: Context, number: Long) =
             Intent(context, MainActivity::class.java).apply { putExtra(EXTRA_NUMBER, number) }
     }
 }

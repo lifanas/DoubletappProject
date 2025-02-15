@@ -1,5 +1,7 @@
 <resources>
-    <string name="app_name">DoubletappProject</string>
-    <string name="enter_the_square">Enter the square</string>
-    <string name="enter_the_main">Enter the main</string>
+    <string name="app_name" translatable="false">DoubletappProject</string>
+    <string name="enter_the_square">To be square</string>
+    <string name="enter_the_main">Return to an increase in the number</string>
+    <string name="upend_to_start_tv">Bend to start</string>
+    <string name="original_number">The original number: %d</string>
 </resources>

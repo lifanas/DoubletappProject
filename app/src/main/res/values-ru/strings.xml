@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="enter_the_square">Возвести в квадрат</string>
+    <string name="enter_the_main">Вернуться к увеличению числа</string>
+    <string name="upend_to_start_tv">Переверните, чтобы начать</string>
+    <string name="original_number">Исходное число: %d</string>
+</resources>
